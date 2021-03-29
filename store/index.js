@@ -33,8 +33,8 @@ const store = new Vuex.Store({
         // 如果上面从本地获取的lifeData对象下有对应的属性，就赋值给state中对应的变量
         // 加上vuex_前缀，是防止变量名冲突，也让人一目了然
         vuex_user: lifeData.vuex_user ? lifeData.vuex_user : {name: '明月'},
-        //vuex_token: lifeData.vuex_token ? lifeData.vuex_token : '',
-		vuex_token: '',
+        vuex_token: lifeData.vuex_token ? lifeData.vuex_token : '',
+		//vuex_token: '',
         // 如果vuex_version无需保存到本地永久存储，无需lifeData.vuex_version方式
         vuex_version: '1.0.1',
         vuex_demo: '绛紫',
@@ -97,5 +97,15 @@ const store = new Vuex.Store({
         }
     }
 })
+
+
+export function getToken(){
+	
+	return uni.getStorageSync('yeju_token')
+}
+
+export function saveToken(token){
+	uni.setStorageSync('yeju_token', token)
+}
 
 export default store

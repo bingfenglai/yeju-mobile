@@ -2,7 +2,7 @@
   <view class="wrap">
     <view class="key-input">
       <view class="title">输入验证码</view>
-      <view class="tips">验证码已发送至 +150****9320</view>
+      <view class="tips">验证码已发送至 {{tel_prefix}} {{tel}}</view>
       <u-message-input :focus="true" :value="value" @change="change" @finish="finish" mode="bottomLine"
                        :maxlength="maxlength"></u-message-input>
       <text :class="{ error: error }">验证码错误，请重新输入</text>
@@ -17,44 +17,69 @@
 <script>
 import config from '../../config.js'
 import mystore from '../../store/index.js'
+import {saveToken} from '../../store/index.js'
 
 export default {
   data() {
     return {
+	  tel_prefix: '+86',
+	  tel: '',
       maxlength: 4,
       value: '',
-      second: 60,
+      second: 30,
       show: false,
       error: false
     };
   },
   computed: {},
-  onLoad() {
-    // this.getCaptcha()
-    let interval = setInterval(() => {
-      this.second--;
-      if (this.second <= 0) {
-        this.show = true;
-        if (this.value.lenth != 4) {
-          this.error = true;
-        }
-        clearInterval(interval);
-      }
-    }, 1000);
+  onLoad(tel) {
+	  console.log('params:', tel.tel);
+	 
+    this.getCaptcha(tel.tel);
+	
+    this.initInterval(30);
   },
   methods: {
+	  
+	  
+	  
+	  getCaptcha(tel){
+		  this.tel = tel;
+		  // 这里省略了请求验证码逻辑
+		  
+	  },
     // 收不到验证码选择时的选择
     noCaptcha() {
       uni.showActionSheet({
         itemList: ['重新获取验证码', '接听语音验证码'],
         success: function (res) {
-
+			if(res.tapIndex==0){
+				console.log('点击了 重新获取验证码')
+				
+			}else{
+				console.log('点击了','接听语音验证码')
+			}
+			this.initInterval(30);
+			
         },
         fail: function (res) {
 
         }
       });
     },
+	initInterval(second){
+			this.second = second;
+			let interval = setInterval(() => {
+			  this.second--;
+			  if (this.second <= 0) {
+			    this.show = true;
+			    // if (this.value.lenth != 4) {
+			    //   this.error = true;
+			    // }
+			    clearInterval(interval);
+			  }
+			}, 1000);  
+	},
     // change事件侦听
     change(value) {
       // console.log('change', value);
@@ -69,7 +94,8 @@ export default {
       console.log('验证码输入完成', value);
 	  console.log("active",config.state.active)
 	  if(config.state.active==='dev'){
-		  mystore.state.vuex_token = '456';
+		  
+		  saveToken('8848')
 	  }
       
       this.$u.route({

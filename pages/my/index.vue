@@ -1,19 +1,21 @@
 <template>
 	<view>
-		<u-navbar :is-back="false" title="　" :border-bottom="false">
-			<view class="u-flex u-row-right" style="width: 100%;">
-				<view class="camera u-flex u-row-center">
-					<u-icon name="camera-fill" color="#000000" size="48"></u-icon>
-				</view>
-			</view>
-		</u-navbar>
+		<u-navbar
+		    :is-back="isBack" ,
+		    :is-fixed="isFixed"
+		    :background="background"
+			:title="title"
+		></u-navbar>
+		
+		
+		
 		<view class="u-flex user-box u-p-l-30 u-p-r-20 u-p-b-30">
 			<view class="u-m-r-10">
 				<u-avatar :src="pic" size="140"></u-avatar>
 			</view>
 			<view class="u-flex-1">
-				<view class="u-font-18 u-p-b-20">uView ui</view>
-				<view class="u-font-14 u-tips-color">微信号:helang_uView</view>
+				<view class="u-font-18 u-p-b-20">{{nick_name}}</view>
+				<view class="u-font-14 u-tips-color">ID: {{yeju_id}}</view>
 			</view>
 			<view class="u-m-l-10 u-p-10">
 				<u-icon name="scan" color="#969799" size="28"></u-icon>
@@ -48,12 +50,30 @@
 	</view>
 </template>
 
+
+
 <script>
 	import {tabbar_list} from "../../common/tabbar/tabbar_list.js"
+	import mystore from "../../store/index.js"
+	import {getToken} from '../../store/index.js'
+	
+	
 	export default {
 		data() {
 			return {
-				pic:'https://uviewui.com/common/logo.png',
+				
+				// 顶部导航
+				title: '个人中心',
+				isBack: false,
+				isFixed: true,
+				background: {
+				  'background-image': 'linear-gradient(45deg, rgb(28, 187, 180), rgb(141, 198, 63))'
+				},
+				
+				nick_name: 'Ferryman',
+				yeju_id: 'l314zhenniubi',
+				
+				pic:'http://8.129.77.225:9000/yeju/%E8%87%B4%E4%B8%80%20-%20%E5%89%AF%E6%9C%AC.png',
 				
 				current: 1,
 				show: true,
@@ -66,51 +86,37 @@
 				}
 			
 		},
-		onLoad() {
-			
+		onShow() {
+			let token = getToken();
+			this.is_authc(token)
 		},
+		
 		methods: {
-			beforeSwitch(index) {
-					
-			    console.log("指针：", index);
-				  this.$u.route({
-					  url: this.list[index].pagePath,
-					  type: 'redirect'
-				  });
-				  
-			    return true;
-			  },
+			is_authc(token) {
+			  console.log("is_authc")
 			  
-			  bgColorChange(index) {
-			
-			    if (index == 0) {
-			      this.activeColor = '#5098FF';
-			      this.inactiveColor = '#909399';
-			    }
-			    if (index == 1) {
-			      this.activeColor = '#D0D0D0';
-			      this.inactiveColor = '#5A5A5A';
-			    }
-			    this.bgColor = ['#ffffff', '#1f1f1d'][index];
-			  },
-			  borderTopChange(index) {
-			    
-			    this.borderTop = !index;
-			  },
-			  badgeChange(index) {
-			   
-			  },
-			  minButtonChange(index) {
-			    console.log("minButtonChange")
-			    this.midButton = !index;
+			  console.log("token", token.toString())
+			  if (token === undefined || token === '') {
+			    console.log("未登录")
+			    this.$u.route({
+			      url: 'pages/login/index'
+			    })
 			  }
-			}
+		}
+	},
 	}
 </script>
 
 <style lang="scss">
 page{
 	background-color: #ededed;
+}
+
+.right-item {
+  margin: 0 12 rpx;
+  position: relative;
+  color: #ffffff;
+  display: flex;
 }
 
 .camera{

@@ -6,6 +6,7 @@
 <script>
 	export default {
 		onLaunch: function() {
+			//uni.setStorageSync('yeju_token',undefined)
 			console.log('App Launch')
 		},
 		onShow: function() {

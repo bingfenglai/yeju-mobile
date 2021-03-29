@@ -13,12 +13,23 @@
 					"navigationBarTextStyle": "white" // 状态栏字体为白色，只能为 white-白色，black-黑色 二选一
 				}
 		},
+		
+		{
+		    "path" : "pages/message/index",
+		    "style" :                                                                                    
+		    {
+		        "navigationStyle": "custom" ,// 隐藏系统导航栏
+		        "navigationBarTextStyle": "black" // 状态栏字体为白色，只能为 white-白色，black-黑色 二选一
+		    }
+		    
+		},
 			
 		
 		{
 			"path":"pages/my/index",
 			"style": {
-				"navigationBarTitleText": ""
+				"navigationStyle": "custom" ,// 隐藏系统导航栏
+				"navigationBarTextStyle": "black" // 状态栏字体为白色，只能为 white-白色，black-黑色 二选一
 			}
 		},
 		
@@ -36,7 +47,8 @@
 		}
 		
 		
-	],
+	    
+    ],
 	"globalStyle": {
 		"navigationBarTextStyle": "black",
 		"navigationBarTitleText": "uni-app",
@@ -56,10 +68,16 @@
 	      "selectedIconPath": "static/index-selected.png",
 	      "text": "首页"
 	    },
+		{
+			"pagePath": "pages/message/index",
+			"iconPath": "static/message/msg.png",
+			"selectedIconPath": "static/message/msg-selected.png",
+			"text": "消息"
+		},
 	    {
 	      "pagePath": "pages/my/index",
-	      "iconPath": "static/center.png",
-	      "selectedIconPath": "static/center-selected.png",
+	      "iconPath": "static/my/my.png",
+	      "selectedIconPath": "static/my/my-selected.png",
 	      "text": "我"
 	    }
 	  ]

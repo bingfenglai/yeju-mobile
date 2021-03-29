@@ -50,10 +50,12 @@ export default {
 	},
 	methods: {
 		submit() {
-			console.log("点击提交")
+			console.log("点击提交");
 			// if(this.$u.test.mobile(this.tel)) {
 				this.$u.route({
-					url: 'pages/login/code'
+					url: 'pages/login/code',
+					type: 'to',
+					params: {tel: this.tel}
 				})
 			// }
 		}
