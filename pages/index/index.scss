@@ -1,0 +1,116 @@
+.slot-wrap {
+	  display: flex;
+	  align-items: center;
+	  /* 如果您想让slot内容占满整个导航栏的宽度 */
+	  /*flex: 1;*/
+	  /* 如果您想让slot内容与导航栏左右有空隙 */
+	  /* padding: 0 30rpx; */
+	}
+	
+	.search-wrap {
+	  margin: 10 0 rpx;
+	  flex: 1;
+	 
+	  padding-left: 30rpx;
+	}
+	
+	.right-item {
+	  margin: 0 0rpx;
+	  padding: 0 20rpx;
+	  position: relative;
+	  color: #ffffff;
+	  display: flex;
+	}
+	
+	.message-box {
+	
+	}
+	
+	.slot-wrap {
+	  display: flex;
+	  align-items: center;
+	  flex: 1;
+	}
+	
+	.navbar-right {
+	  margin-right: 24 rpx;
+	  display: flex;
+	}
+	
+	.search-wrap {
+	  margin: 0 20 rpx;
+	  flex: 1;
+	}
+	
+	
+	
+	.demo-warter {
+		border-radius: 8px;
+		margin: 5px;
+		background-color: #ffffff;
+		padding: 8px;
+		position: relative;
+	}
+	
+	.u-close {
+		position: absolute;
+		top: 32rpx;
+		right: 32rpx;
+	}
+	
+	.demo-img-wrap {
+	}
+	
+	.demo-image {
+		width: 100%;
+		border-radius: 4px;
+	}
+	
+	.demo-title {
+		font-size: 30rpx;
+		margin-top: 5px;
+		color: $u-main-color;
+		word-break: break-all;
+	}
+	
+	.demo-tag {
+		display: flex;
+		margin-top: 5px;
+	}
+	
+	.demo-tag-owner {
+		background-color: $u-type-error;
+		color: #ffffff;
+		display: flex;
+		align-items: center;
+		padding: 4rpx 14rpx;
+		border-radius: 50rpx;
+		font-size: 20rpx;
+		line-height: 1;
+	}
+	
+	.demo-tag-text {
+		border: 1px solid $u-type-primary;
+		color: $u-type-primary;
+		margin-left: 10px;
+		border-radius: 50rpx;
+		line-height: 1;
+		padding: 4rpx 14rpx;
+		display: flex;
+		align-items: center;
+		border-radius: 50rpx;
+		font-size: 20rpx;
+	}
+	
+	.demo-price {
+		font-size: 30rpx;
+		color: $u-type-error;
+		margin-top: 5px;
+	}
+	
+	.demo-shop {
+		font-size: 22rpx;
+		color: $u-tips-color;
+		margin-top: 5px;
+	}
+	
