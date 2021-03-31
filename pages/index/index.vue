@@ -42,6 +42,7 @@
       </view>
     </view>
 
+	
 	<view>
 	<!-- 九宫格开始 -->
 	<u-grid :col="col" @click="grid_click" v-if="!isSwiper" :border="grip_border">
@@ -90,183 +91,83 @@
 	</u-grid>
 	</view>
 	
+	
+	<!-- 标签导航开始 -->
+		<view>
+			
+			<u-tabs :list="tabs_list" :is-scroll="tabs_isScroll" :current="tabs_current" @change="tabs_change"></u-tabs>
+			
+		</view>
+	
 	<!-- 间隔槽 -->
 	
 	<view>
 		<u-gap :bg-color="gap_bgColor" :height="gap_height" :margin-top="gap_marginTop" :margin-bottom="gap_marginBottom"></u-gap>
 	</view>
-
-
-    <!-- <!-- 底部到导航开始 -->
+	
+	
+	<!-- waterfall 房源瀑布流 -->
+	<view class="wrap">
+		<u-waterfall v-model="waterfall_flowList" ref="uWaterfall">
+			<template v-slot:left="{ leftList }">
+				<view class="demo-warter" v-for="(item, index) in leftList" :key="index">
+					<!-- 微信小程序需要hx2.8.11版本才支持在template中引入其他组件，比如下方的u-lazy-load组件 -->
+					<u-lazy-load threshold="-450" border-radius="10" :image="item.image" :index="index"></u-lazy-load>
+					<view class="demo-title">{{ item.title }}</view>
+					<view class="demo-price">{{ item.price }}元</view>
+					<view class="demo-tag">
+						<view class="demo-tag-owner">自营</view>
+						<view class="demo-tag-text">放心购</view>
+					</view>
+					<view class="demo-shop">{{ item.shop }}</view>
+					<view class="u-close">
+						<u-icon name="close-circle-fill" color="#fa3534" size="34" @click="waterfall_remove(item.id)"></u-icon>
+					</view>
+				</view>
+			</template>
+			<template v-slot:right="{ rightList }">
+				<view class="demo-warter" v-for="(item, index) in rightList" :key="index">
+					<u-lazy-load threshold="-450" border-radius="10" :image="item.image" :index="index"></u-lazy-load>
+					<view class="demo-title">{{ item.title }}</view>
+					<view class="demo-price">{{ item.price }}元</view>
+					<view class="demo-tag">
+						<view class="demo-tag-owner">自营</view>
+						<view class="demo-tag-text">放心购</view>
+					</view>
+					<view class="demo-shop">{{ item.shop }}</view>
+					<view class="u-close">
+						<u-icon name="close-circle-fill" color="#fa3534" size="34" @click="waterfall_remove(item.id)"></u-icon>
+					</view>
+				</view>
+			</template>
+		</u-waterfall>
+		<u-loadmore bg-color="rgb(240, 240, 240)" :status="waterfall_loadStatus" @loadmore="waterfall_addRandomData"></u-loadmore>
+	</view>
+	
+	
+	
+	
+	
+	
+	 <!-- 底线开始 -->
+	<view>
+		<u-divider :type="divider_type" :borderColor="divider_borderColor" :bg-color="divider_bgColor"
+		:half-width="divider_halfWidth" :color="divider_color" :font-size="divider_fontSize">{{divider_text}}</u-divider>
+	</view>
 
 
   </view>
 
 </template>
 
-<script>
-import {tabbar_list} from "../../common/tabbar/tabbar_list.js"
-import mystore from "../../store/index.js"
-import {getToken} from '../../store/index.js'
+<script src="./index.js">
 
-
-export default {
-  data() {
-    return {
-      background: {
-        'background-image': 'linear-gradient(45deg, rgb(28, 187, 180), rgb(141, 198, 63))'
-      },
-      title: '首页',
-      backText: '返回',
-      isBack: false,
-      custom: false,
-      isFixed: true,
-      showAction: false,
-      backIconName: 'nav-back',
-	  
-
-      //搜索关键词
-      keyword: undefined,
-	  clearabled: true,
-	  
-	  //消息图标
-	  MegIsDot: false,
-	  mesg_count: 2,
-     
-
-
-      //轮播图属性开始
-      swipe_mode: 'round',
-      swipe_list: [{
-        image: 'https://cdn.uviewui.com/uview/swiper/1.jpg',
-        title: '昨夜星辰昨夜风，画楼西畔桂堂东'
-      },
-        {
-          image: 'https://cdn.uviewui.com/uview/swiper/2.jpg',
-          title: '身无彩凤双飞翼，心有灵犀一点通'
-        },
-        {
-          image: 'https://cdn.uviewui.com/uview/swiper/3.jpg',
-          title: '谁念西风独自凉，萧萧黄叶闭疏窗，沉思往事立残阳'
-        }
-      ],
-      swipe_title: true,
-      indicatorPos: 'bottomCenter',
-      effect3d: false,
-	  
-	  
-	  //九宫格属性开始
-	  isSwiper: false,
-	  grip_border: false,
-	  col: 4,
-	  
-	  //间隔槽属性开始
-	  gap_bgColor: this.$u.color.bgColor,
-	  gap_height: 5,
-	  gap_marginTop: 5,
-	  gap_marginBottom: 5
-
-    }
-  },
-  onLoad() {
-	
-
-  },
-
-  onShow() {
-    this.is_authc();
-	this.keyword = undefined;
-  },
-
-  methods: {
-	  
-	grid_item_click(){
-		
-	},
-	  
-	grid_click(){
-		
-	},
-	  
-	clickMsg(){
-		this.$u.route({
-			url: 'pages/message/index',
-			type: 'switchTab'
-		})
-	},
-	  
-	doSearch(keyword){
-		console.log("搜索内容：", keyword);
-		this.$refs.uToast.show({
-			title: '搜索内容为：' + keyword,
-			type: 'success'
-		});
-	},
-    is_authc() {
-      console.log("is_authc")
-      const token = getToken()
-      console.log("token", token)
-      if (token === undefined || token === '') {
-        console.log("未登录")
-        this.$u.route({
-          url: 'pages/login/index'
-        })
-      }
-
-    },
-
-    //轮播图相关方法
-    swipe_click(index) {
-      console.log(this.swipe_list[index].image)
-    } 
-    
-  }
-}
 </script>
 
 <style scoped lang="scss">
-.slot-wrap {
-  display: flex;
-  align-items: center;
-  /* 如果您想让slot内容占满整个导航栏的宽度 */
-  /*flex: 1;*/
-  /* 如果您想让slot内容与导航栏左右有空隙 */
-  /* padding: 0 30rpx; */
-}
+	@import "./index.scss"
+</style>
 
-.search-wrap {
-  margin: 10 0 rpx;
-  flex: 1;
- 
-  padding-left: 30rpx;
-}
-
-.right-item {
-  margin: 0 0rpx;
-  padding: 0 20rpx;
-  position: relative;
-  color: #ffffff;
-  display: flex;
-}
-
-.message-box {
-
-}
-
-.slot-wrap {
-  display: flex;
-  align-items: center;
-  flex: 1;
-}
-
-.navbar-right {
-  margin-right: 24 rpx;
-  display: flex;
-}
-
-.search-wrap {
-  margin: 0 20 rpx;
-  flex: 1;
-}
+<style>
 
 </style>

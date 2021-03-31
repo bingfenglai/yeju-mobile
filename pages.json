@@ -5,7 +5,7 @@
 	
 	"pages": [ //pages数组中第一项表示应用启动页，参考：https://uniapp.dcloud.io/collocation/pages
 		
-		
+		// 首页
 		{
 			"path": "pages/index/index",
 			"style": {
@@ -13,6 +13,8 @@
 					"navigationBarTextStyle": "white" // 状态栏字体为白色，只能为 white-白色，black-黑色 二选一
 				}
 		},
+		
+		//消息页
 		
 		{
 		    "path" : "pages/message/index",
@@ -24,6 +26,7 @@
 		    
 		},
 			
+		// 个人页
 		
 		{
 			"path":"pages/my/index",
@@ -32,6 +35,8 @@
 				"navigationBarTextStyle": "black" // 状态栏字体为白色，只能为 white-白色，black-黑色 二选一
 			}
 		},
+		
+		// 登录页
 		
 		{
 		  "path": "pages/login/index",
@@ -44,6 +49,14 @@
 		  "style": {
 		    "navigationBarTitleText": "获取验证码"
 		  }
+		},
+		
+		// 城市选择
+		{
+			"path":"pages/city-select/u-city-select",
+			"style":{
+				"navigationBarTitleText": "城市选择"
+			}
 		}
 		
 		
