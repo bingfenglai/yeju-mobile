@@ -57,6 +57,22 @@
 			"style":{
 				"navigationBarTitleText": "城市选择"
 			}
+		},
+		
+		//搜索页
+		{
+			"path":"pages/search/index",
+			"style":{
+				"navigationStyle": "custom" ,// 隐藏系统导航栏
+				"navigationBarTextStyle": "black" // 状态栏字体为白色，只能为 white-白色，black-黑色 二选一
+			}
+		},
+		
+		{
+			"path":"pages/no-network/index",
+			"style": {
+				"navigationBarTitleText":"无法连接互联网"
+			}
 		}
 		
 		

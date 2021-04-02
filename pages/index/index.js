@@ -1,11 +1,15 @@
 import {tabbar_list} from "../../common/tabbar/tabbar_list.js"
 import mystore from "../../store/index.js"
 import {getToken} from '../../store/index.js'
-
+import myNoNetwork from '../no-network/index.vue'
 
 export default {
+  components: {
+    myNoNetwork
+          },
   data() {
     return {
+		
       background: {
         'background-image': 'linear-gradient(45deg, rgb(28, 187, 180), rgb(141, 198, 63))'
       },
@@ -17,10 +21,16 @@ export default {
       showAction: false,
       backIconName: 'nav-back',
 	  
+	  //城市选择
+	  selected_city:{
+		  city_name: "海口",
+		  city_id: "120"
+	  },
 
       //搜索关键词
       keyword: undefined,
 	  clearabled: true,
+	  search_disabled: true,
 	  
 	  //消息图标
 	  MegIsDot: false,
@@ -31,15 +41,15 @@ export default {
       //轮播图属性开始
       swipe_mode: 'round',
       swipe_list: [{
-        image: 'https://cdn.uviewui.com/uview/swiper/1.jpg',
+        image: 'http://8.129.77.225:9000/yeju/img/1.jpg',
         title: '昨夜星辰昨夜风，画楼西畔桂堂东'
       },
         {
-          image: 'https://cdn.uviewui.com/uview/swiper/2.jpg',
+          image: 'http://8.129.77.225:9000/yeju/img/2.jpg',
           title: '身无彩凤双飞翼，心有灵犀一点通'
         },
         {
-          image: 'https://cdn.uviewui.com/uview/swiper/3.jpg',
+          image: 'http://8.129.77.225:9000/yeju/img/3.jpg',
           title: '谁念西风独自凉，萧萧黄叶闭疏窗，沉思往事立残阳'
         }
       ],
@@ -100,67 +110,67 @@ export default {
 	  		price: 35,
 	  		title: '北国风光，千里冰封，万里雪飘',
 	  		shop: '李白杜甫白居易旗舰店',
-	  		image: 'http://pic.sc.chinaz.com/Files/pic/pic9/202002/zzpic23327_s.jpg'
+	  		image: 'http://8.129.77.225:9000/yeju/img/1.jpg'
 	  	},
 	  	{
 	  		price: 75,
 	  		title: '望长城内外，惟余莽莽',
 	  		shop: '李白杜甫白居易旗舰店',
-	  		image: 'http://pic.sc.chinaz.com/Files/pic/pic9/202002/zzpic23325_s.jpg'
+	  		image: 'http://8.129.77.225:9000/yeju/img/1.jpg'
 	  	},
 	  	{
 	  		price: 385,
 	  		title: '大河上下，顿失滔滔',
 	  		shop: '李白杜甫白居易旗舰店',
-	  		image: 'http://pic2.sc.chinaz.com/Files/pic/pic9/202002/hpic2119_s.jpg'
+	  		image: 'http://8.129.77.225:9000/yeju/img/1.jpg'
 	  	},
 	  	{
 	  		price: 784,
 	  		title: '欲与天公试比高',
 	  		shop: '李白杜甫白居易旗舰店',
-	  		image: 'http://pic2.sc.chinaz.com/Files/pic/pic9/202002/zzpic23369_s.jpg'
+	  		image: 'http://8.129.77.225:9000/yeju/img/1.jpg'
 	  	},
 	  	{
 	  		price: 7891,
 	  		title: '须晴日，看红装素裹，分外妖娆',
 	  		shop: '李白杜甫白居易旗舰店',
-	  		image: 'http://pic2.sc.chinaz.com/Files/pic/pic9/202002/hpic2130_s.jpg'
+	  		image: 'http://8.129.77.225:9000/yeju/img/1.jpg'
 	  	},
 	  	{
 	  		price: 2341,
 	  		shop: '李白杜甫白居易旗舰店',
 	  		title: '江山如此多娇，引无数英雄竞折腰',
-	  		image: 'http://pic1.sc.chinaz.com/Files/pic/pic9/202002/zzpic23346_s.jpg'
+	  		image: 'http://8.129.77.225:9000/yeju/img/1.jpg'
 	  	},
 	  	{
 	  		price: 661,
 	  		shop: '李白杜甫白居易旗舰店',
 	  		title: '惜秦皇汉武，略输文采',
-	  		image: 'http://pic1.sc.chinaz.com/Files/pic/pic9/202002/zzpic23344_s.jpg'
+	  		image: 'http://8.129.77.225:9000/yeju/img/1.jpg'
 	  	},
 	  	{
 	  		price: 1654,
 	  		title: '唐宗宋祖，稍逊风骚',
 	  		shop: '李白杜甫白居易旗舰店',
-	  		image: 'http://pic1.sc.chinaz.com/Files/pic/pic9/202002/zzpic23343_s.jpg'
+	  		image: 'http://8.129.77.225:9000/yeju/img/1.jpg'
 	  	},
 	  	{
 	  		price: 1678,
 	  		title: '一代天骄，成吉思汗',
 	  		shop: '李白杜甫白居易旗舰店',
-	  		image: 'http://pic1.sc.chinaz.com/Files/pic/pic9/202002/zzpic23343_s.jpg'
+	  		image: 'http://8.129.77.225:9000/yeju/img/1.jpg'
 	  	},
 	  	{
 	  		price: 924,
 	  		title: '只识弯弓射大雕',
 	  		shop: '李白杜甫白居易旗舰店',
-	  		image: 'http://pic1.sc.chinaz.com/Files/pic/pic9/202002/zzpic23343_s.jpg'
+	  		image: 'http://8.129.77.225:9000/yeju/img/1.jpg'
 	  	},
 	  	{
 	  		price: 8243,
 	  		title: '俱往矣，数风流人物，还看今朝',
 	  		shop: '李白杜甫白居易旗舰店',
-	  		image: 'http://pic1.sc.chinaz.com/Files/pic/pic9/202002/zzpic23343_s.jpg'
+	  		image: 'http://8.129.77.225:9000/yeju/img/1.jpg'
 	  	}
 	  ],
 	  
@@ -189,7 +199,15 @@ export default {
 
   methods: {
 	  
+	// 城市选择方法
+	selectCity(){
+		this.$refs.uToast.show({
+			title: '点击了城市',
+			type: 'success'
+		});
+	},
 	
+	//九宫格方法
 	  
 	grid_item_click(){
 		
@@ -206,14 +224,24 @@ export default {
 			type: 'switchTab'
 		})
 	},
+	
+	// 搜索
 	  
 	doSearch(keyword){
 		console.log("搜索内容：", keyword);
-		this.$refs.uToast.show({
-			title: '搜索内容为：' + keyword,
-			type: 'success'
-		});
+		this.$u.route({
+			url: 'pages/search/index',
+			params: {params: keyword}
+		})
 	},
+	
+	search_click(){
+		this.$u.route({
+			url: 'pages/search/index'
+		})
+	},
+	
+	
     is_authc() {
       console.log("is_authc")
       const token = getToken()

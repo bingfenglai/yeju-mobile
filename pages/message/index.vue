@@ -27,23 +27,37 @@
 			@content-click="contentClick"
 		>
 			<view class="item u-border-bottom">
-				<image mode="aspectFill" :src="item.images" />
+				<image  shape="circle" class="u-avatar"  :src="item.images" />
 				<!-- 此层wrap在此为必写的，否则可能会出现标题定位错误 -->
 				<view class="title-wrap">
-					<text class="title u-line-2">{{ item.title }}</text>
+					<text class="title u-line-2" style="font-size: 36rpx; font-weight: 600;">{{ item.title }}</text>
+					<text class="msg">{{item.msg}}</text>
+					<u-badge  class="badge" :count="item.msg_count" :isDot=false size="medium" ></u-badge>
 				</view>
 			</view>
 		</u-swipe-action>
 		</view>
+		
+		
+		<view>
+			<my-no-network></my-no-network>
+		</view>
 	</view>
+	
 </template>
 
 <script>
 	import {getToken} from '../../store/index.js'
 	import {connect} from './message.js'
+	import myNoNetwork from '../no-network/index.vue'
 	export default {
+		components: {
+		  myNoNetwork
+		        },
 		data() {
 			return {
+				
+				circle: 'circle',
 				
 				// 顶部导航
 				title: '消息',
@@ -59,21 +73,26 @@
 				list1: [
 					{
 						id: 1,
-						title: '长安回望绣成堆，山顶千门次第开，一骑红尘妃子笑，无人知是荔枝来',
-						images: 'https://cdn.uviewui.com/uview/common/logo.png',
-						show: false
+						title: '荔枝',
+						msg: '长安回望绣成堆，山顶千门次第开，一骑红尘妃子笑，无人知是荔枝来',
+						images: 'http://8.129.77.225:9000/yeju/%E8%87%B4%E4%B8%80%20-%20%E5%89%AF%E6%9C%AC.png',
+						show: false,
+						msg_count: 3
 					},
 					{
 						id: 2,
-						title: '新丰绿树起黄埃，数骑渔阳探使回，霓裳一曲千峰上，舞破中原始下来',
-						images: 'https://cdn.uviewui.com/uview/common/logo.png',
-						show: false
+						title: '霓裳',
+						msg: '新丰绿树起黄埃，数骑渔阳探使回，霓裳一曲千峰上，舞破中原始下来',
+						images: 'http://8.129.77.225:9000/yeju/%E8%87%B4%E4%B8%80%20-%20%E5%89%AF%E6%9C%AC.png',
+						show: false,
+						msg_count: 2
 					},
 					{
 						id: 3,
-						title: '登临送目，正故国晚秋，天气初肃。千里澄江似练，翠峰如簇',
-						images: 'https://cdn.uviewui.com/uview/common/logo.png',
-						show: false,
+						title: '翠峰',
+						msg: '登临送目，正故国晚秋，天气初肃。千里澄江似练，翠峰如簇',
+						images: 'http://8.129.77.225:9000/yeju/%E8%87%B4%E4%B8%80%20-%20%E5%89%AF%E6%9C%AC.png',
+						msg_count: 101
 					}
 				],
 				btnWidth: 180,
@@ -157,7 +176,7 @@
 		flex: 0 0 120rpx;
 		height: 120rpx;
 		margin-right: 20rpx;
-		border-radius: 12rpx;
+		margin-top: 20rpx;
 	}
 	
 	.title {
@@ -166,5 +185,24 @@
 		color: $u-content-color;
 		margin-top: 20rpx;
 	}
-
+	
+	.msg {
+		 white-space: nowrap;
+		 width: 600rpx;
+		 display: block;
+		 overflow: hidden;
+		 text-overflow: ellipsis;
+		 color: #82848A;
+		 padding-right: 60rpx;
+	}
+	
+	.badge{
+		
+		margin-top: 75rpx;
+		margin-right: 20rpx;
+		
+		
+	}
+	
+	
 </style>

@@ -46,7 +46,9 @@
 			</u-cell-group>
 		</view>
 		
-		
+		<view>
+			<my-no-network></my-no-network>
+		</view>
 	</view>
 </template>
 
@@ -56,9 +58,12 @@
 	import {tabbar_list} from "../../common/tabbar/tabbar_list.js"
 	import mystore from "../../store/index.js"
 	import {getToken} from '../../store/index.js'
-	
+	import myNoNetwork from '../no-network/index.vue'
 	
 	export default {
+		components: {
+		  myNoNetwork
+		        },
 		data() {
 			return {
 				

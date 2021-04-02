@@ -8,13 +8,20 @@
           :is-fixed="isFixed"
           :background="background"
       >
+	  
+		<view @tap="selectCity" class="u-icon-item citySelected">
+			<u-icon name="map-fill" size="40" color="#909399"></u-icon>
+			<text class="u-icon-name">{{selected_city.city_name}}</text>
+		</view>
+	  
         <view class="search-wrap">
           <!-- 如果使用u-search组件，必须要给v-model绑定一个变量 -->
           <u-search 
 			v-model="keyword" 
 			@search="doSearch" 
 			:show-action="showAction" 
-			
+			:disabled="search_disabled"
+			@click="search_click"
 			:action-style="{color: '#fff'}" 
 			:clearabled="clearabled" ></u-search>
         
@@ -114,7 +121,7 @@
 					<!-- 微信小程序需要hx2.8.11版本才支持在template中引入其他组件，比如下方的u-lazy-load组件 -->
 					<u-lazy-load threshold="-450" border-radius="10" :image="item.image" :index="index"></u-lazy-load>
 					<view class="demo-title">{{ item.title }}</view>
-					<view class="demo-price">{{ item.price }}元</view>
+					<view class="demo-price">￥ {{ item.price }}</view>
 					<view class="demo-tag">
 						<view class="demo-tag-owner">自营</view>
 						<view class="demo-tag-text">放心购</view>
@@ -129,7 +136,7 @@
 				<view class="demo-warter" v-for="(item, index) in rightList" :key="index">
 					<u-lazy-load threshold="-450" border-radius="10" :image="item.image" :index="index"></u-lazy-load>
 					<view class="demo-title">{{ item.title }}</view>
-					<view class="demo-price">{{ item.price }}元</view>
+					<view class="demo-price">￥{{ item.price }}</view>
 					<view class="demo-tag">
 						<view class="demo-tag-owner">自营</view>
 						<view class="demo-tag-text">放心购</view>
@@ -154,6 +161,9 @@
 		<u-divider :type="divider_type" :borderColor="divider_borderColor" :bg-color="divider_bgColor"
 		:half-width="divider_halfWidth" :color="divider_color" :font-size="divider_fontSize">{{divider_text}}</u-divider>
 	</view>
+	
+	<!-- 网络状态监听 -->
+	<my-no-network></my-no-network>
 
 
   </view>

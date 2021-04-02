@@ -1,4 +1,8 @@
-.slot-wrap {
+	.citySelected{
+		padding-left: 24rpx;
+	}
+	
+	.slot-wrap {
 	  display: flex;
 	  align-items: center;
 	  /* 如果您想让slot内容占满整个导航栏的宽度 */
@@ -33,7 +37,7 @@
 	}
 	
 	.navbar-right {
-	  margin-right: 24 rpx;
+	  padding-right: 18rpx;
 	  display: flex;
 	}
 	
