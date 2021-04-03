@@ -41,15 +41,15 @@ export default {
       //轮播图属性开始
       swipe_mode: 'round',
       swipe_list: [{
-        image: 'http://8.129.77.225:9000/yeju/img/1.jpg',
+        image: 'http://8.129.77.225:9000/yeju/banner/1.png',
         title: '昨夜星辰昨夜风，画楼西畔桂堂东'
       },
         {
-          image: 'http://8.129.77.225:9000/yeju/img/2.jpg',
+          image: 'http://8.129.77.225:9000/yeju/banner/2.png',
           title: '身无彩凤双飞翼，心有灵犀一点通'
         },
         {
-          image: 'http://8.129.77.225:9000/yeju/img/3.jpg',
+          image: 'http://8.129.77.225:9000/yeju/banner/3.png',
           title: '谁念西风独自凉，萧萧黄叶闭疏窗，沉思往事立残阳'
         }
       ],
@@ -72,26 +72,10 @@ export default {
 	  //标签导航开始
 	  tabs_list: [],
 	  tabs_data: [{
-	  	name: '关注',
-	  	count: 100
-	  }, {
-	  	name:  '推荐',
-	  	count: 7
-	  }, {
-	  	name: '电影'
-	  },{
-	  	name: '电视剧'
-	  },{
-	  	name: '小视频'
-	  }, {
-	  	name:  '游戏'
-	  }, {
-	  	name: '校园'
-	  },{
-	  	name: '影视'
-	  },{
-	  	name: '音乐'
-	  }],
+		  name: '推荐'
+	  },
+	  {name: '新上'},
+	  {name: '热门商圈'}],
 	  
 	  tabs_current: 0,
 	  tabs_sectionCurrent: 0,
@@ -108,69 +92,69 @@ export default {
 	  waterfall_list: [
 	  	{
 	  		price: 35,
-	  		title: '北国风光，千里冰封，万里雪飘',
+	  		title: '海大优等生公寓2居',
 	  		shop: '李白杜甫白居易旗舰店',
-	  		image: 'http://8.129.77.225:9000/yeju/img/1.jpg'
+	  		image: 'http://8.129.77.225:9000/yeju/house/1.png'
 	  	},
 	  	{
 	  		price: 75,
-	  		title: '望长城内外，惟余莽莽',
+	  		title: '海大优等生公寓10栋120',
 	  		shop: '李白杜甫白居易旗舰店',
-	  		image: 'http://8.129.77.225:9000/yeju/img/1.jpg'
+	  		image: 'http://8.129.77.225:9000/yeju/house/2.png'
 	  	},
 	  	{
 	  		price: 385,
-	  		title: '大河上下，顿失滔滔',
+	  		title: '海大优等生公寓10栋119',
 	  		shop: '李白杜甫白居易旗舰店',
-	  		image: 'http://8.129.77.225:9000/yeju/img/1.jpg'
+	  		image: 'http://8.129.77.225:9000/yeju/house/3.png'
 	  	},
 	  	{
 	  		price: 784,
-	  		title: '欲与天公试比高',
+	  		title: '海大优等生公寓10栋121',
 	  		shop: '李白杜甫白居易旗舰店',
-	  		image: 'http://8.129.77.225:9000/yeju/img/1.jpg'
+	  		image: 'http://8.129.77.225:9000/yeju/house/4.jpg'
 	  	},
 	  	{
 	  		price: 7891,
-	  		title: '须晴日，看红装素裹，分外妖娆',
+	  		title: '海大优等生公寓10栋122',
 	  		shop: '李白杜甫白居易旗舰店',
-	  		image: 'http://8.129.77.225:9000/yeju/img/1.jpg'
+	  		image: 'http://8.129.77.225:9000/yeju/house/5.jpg'
 	  	},
 	  	{
 	  		price: 2341,
-	  		shop: '李白杜甫白居易旗舰店',
-	  		title: '江山如此多娇，引无数英雄竞折腰',
-	  		image: 'http://8.129.77.225:9000/yeju/img/1.jpg'
+	  		shop: '',
+	  		title: '海大优等生公寓10栋123',
+	  		image: 'http://8.129.77.225:9000/yeju/house/6.jpg'
 	  	},
 	  	{
 	  		price: 661,
-	  		shop: '李白杜甫白居易旗舰店',
-	  		title: '惜秦皇汉武，略输文采',
-	  		image: 'http://8.129.77.225:9000/yeju/img/1.jpg'
+	  		shop: '',
+	  		title: '海大优等生公寓10栋124',
+	  		image: 'http://8.129.77.225:9000/yeju/house/7.jpg'
 	  	},
 	  	{
 	  		price: 1654,
-	  		title: '唐宗宋祖，稍逊风骚',
+	  		title: '子衿公寓 面朝大海 春暖花开',
 	  		shop: '李白杜甫白居易旗舰店',
-	  		image: 'http://8.129.77.225:9000/yeju/img/1.jpg'
+	  		image: 'http://8.129.77.225:9000/yeju/house/8.jpg'
 	  	},
 	  	{
 	  		price: 1678,
-	  		title: '一代天骄，成吉思汗',
+	  		title: '男德学院精品房1栋101',
 	  		shop: '李白杜甫白居易旗舰店',
-	  		image: 'http://8.129.77.225:9000/yeju/img/1.jpg'
+	  		image: 'http://8.129.77.225:9000/yeju/house/9.jpg'
 	  	},
 	  	{
 	  		price: 924,
-	  		title: '只识弯弓射大雕',
+	  		title: '男德学院精品房4栋346',
 	  		shop: '李白杜甫白居易旗舰店',
-	  		image: 'http://8.129.77.225:9000/yeju/img/1.jpg'
+	  		image: 'http://8.129.77.225:9000/yeju/house/10.jpg'
 	  	},
 	  	{
 	  		price: 8243,
-	  		title: '俱往矣，数风流人物，还看今朝',
+	  		title: '侠客岛精选小洋楼',
 	  		shop: '李白杜甫白居易旗舰店',
-	  		image: 'http://8.129.77.225:9000/yeju/img/1.jpg'
+	  		image: 'http://8.129.77.225:9000/yeju/house/12.jpg'
 	  	}
 	  ],
 	  
