@@ -91,66 +91,77 @@ export default {
 	  waterfall_flowList: [],
 	  waterfall_list: [
 	  	{
+			id: 202001,
 	  		price: 35,
 	  		title: '海大优等生公寓2居',
 	  		shop: '李白杜甫白居易旗舰店',
 	  		image: 'http://8.129.77.225:9000/yeju/house/1.png'
 	  	},
 	  	{
+			id: 202002,
 	  		price: 75,
 	  		title: '海大优等生公寓10栋120',
 	  		shop: '李白杜甫白居易旗舰店',
 	  		image: 'http://8.129.77.225:9000/yeju/house/2.png'
 	  	},
 	  	{
+			id: 202003,
 	  		price: 385,
 	  		title: '海大优等生公寓10栋119',
 	  		shop: '李白杜甫白居易旗舰店',
 	  		image: 'http://8.129.77.225:9000/yeju/house/3.png'
 	  	},
 	  	{
+			id: 202004,
 	  		price: 784,
 	  		title: '海大优等生公寓10栋121',
 	  		shop: '李白杜甫白居易旗舰店',
 	  		image: 'http://8.129.77.225:9000/yeju/house/4.jpg'
 	  	},
 	  	{
+			id: 202005,
 	  		price: 7891,
 	  		title: '海大优等生公寓10栋122',
 	  		shop: '李白杜甫白居易旗舰店',
 	  		image: 'http://8.129.77.225:9000/yeju/house/5.jpg'
 	  	},
 	  	{
+			id: 202006,
 	  		price: 2341,
 	  		shop: '',
 	  		title: '海大优等生公寓10栋123',
 	  		image: 'http://8.129.77.225:9000/yeju/house/6.jpg'
 	  	},
 	  	{
+			id: 202007,
 	  		price: 661,
 	  		shop: '',
 	  		title: '海大优等生公寓10栋124',
 	  		image: 'http://8.129.77.225:9000/yeju/house/7.jpg'
 	  	},
 	  	{
+			id: 202008,
 	  		price: 1654,
 	  		title: '子衿公寓 面朝大海 春暖花开',
 	  		shop: '李白杜甫白居易旗舰店',
 	  		image: 'http://8.129.77.225:9000/yeju/house/8.jpg'
 	  	},
 	  	{
+			id: 202009,
 	  		price: 1678,
 	  		title: '男德学院精品房1栋101',
 	  		shop: '李白杜甫白居易旗舰店',
 	  		image: 'http://8.129.77.225:9000/yeju/house/9.jpg'
 	  	},
 	  	{
+			id: 202010,
 	  		price: 924,
 	  		title: '男德学院精品房4栋346',
 	  		shop: '李白杜甫白居易旗舰店',
 	  		image: 'http://8.129.77.225:9000/yeju/house/10.jpg'
 	  	},
 	  	{
+			id: 202011,
 	  		price: 8243,
 	  		title: '侠客岛精选小洋楼',
 	  		shop: '李白杜甫白居易旗舰店',
@@ -250,13 +261,20 @@ export default {
 		this.tabs_current = index;
 	},
 	
+	onHouseItemClick(index){
+		console.log("点击了房源",index)
+		this.$u.route({
+		  url: 'pages/house-details/house-details'
+		})
+	},
+	
 	// 房源瀑布
 	waterfall_addRandomData() {
 		for (let i = 0; i < 10; i++) {
 			let index = this.$u.random(0, this.waterfall_list.length - 1);
 			// 先转成字符串再转成对象，避免数组对象引用导致数据混乱
 			let item = JSON.parse(JSON.stringify(this.waterfall_list[index]));
-			item.id = this.$u.guid();
+			// item.id = this.$u.guid();
 			this.waterfall_flowList.push(item);
 		}
 	},

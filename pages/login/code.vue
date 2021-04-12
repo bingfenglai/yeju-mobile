@@ -28,7 +28,8 @@ export default {
       value: '',
       second: 30,
       show: false,
-      error: false
+      error: false, 
+	  codeKey: undefined
     };
   },
   computed: {},
@@ -46,7 +47,11 @@ export default {
 	  getCaptcha(tel){
 		  this.tel = tel;
 		  // 这里省略了请求验证码逻辑
-		  
+		 
+		  this.$u.get('/auth-consumer/auth/code/phone/'+'17330937086').then(res=>{
+		  		console.log("获取验证码",res.data.token)
+		  		this.codeKey = res.data.token
+		  	})		  
 	  },
     // 收不到验证码选择时的选择
     noCaptcha() {
@@ -95,7 +100,7 @@ export default {
 	  console.log("active",config.state.active)
 	  if(config.state.active==='dev'){
 		  
-		  saveToken('8848')
+		  saveToken('yeju_eyJhbGciOiJSUzUxMiJ9.eyJzdWJqZWN0Ijoie1wicHJpbmNpcGFsXCI6XCI5NjkzOTJcIixcImV4cGlyYXRpb25cIjo2NjYsXCJ0aW1lVW5pdFwiOlwiREFZU1wiLFwiYXV0aG9yaXR5TGlzdFwiOm51bGwsXCJzZXNzaW9uSWRcIjpcIjk2OTM5MTE2MTQ2MTI0NDIzMzlcIn0iLCJqdGkiOiJNalJrWWpJeU1UTXRPV05oTmkwMFlqVTRMVGd4WXpBdE1EYzVPV0l4T0RBNE5XUTMiLCJleHAiOjE2NzUxNDE2OTB9.mfn-ukAoiQGjatl6rCdJHDbtXecC8XzrnCwDe-GZzK_p1TlJcByQyhKx1B886xFPUDPu9LEf7KbrqDs5ouWT_Z-oS0v_rd1sWll9fJCTxaqsF53-pnIMSpkxR2slAnwQuKNNtttIGLYsURewUtYja5Ks1D9ZSQrIMMxtF1wj1iYnGgp4pEpH_n7AwS7T8yMv3up22Ibgy7Z7oZ3RCWei-GF4pY5vyqqyMgp5IkS4wtKEfEFzVUoQQWUomIOdGSr6SUjNBJ04oeDOBjCONuZU-lBpds_B1Dh30omNoZlFJsWUbN2hChOMD1pcC11IKYmTmvr6KgmHuNnE_jWnm_ZR8A')
 	  }
       
       this.$u.route({

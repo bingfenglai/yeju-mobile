@@ -135,6 +135,10 @@
 			  }
 			},
 			
+			onclickMesItem(id){
+				
+			},
+			
 			open(index) {
 				this.list[index].show = true;
 				this.list.map((val, idx) => {
@@ -158,6 +162,13 @@
 			
 			contentClick(index) {
 				console.log('点击了： ',index);
+				let title = this.list[index].title;
+				console.log(title);
+				this.$u.route({
+					url: 'pages/message/message-details/index',
+					type: 'to',
+					params: {title: title}}
+				)
 			}
 			
 			

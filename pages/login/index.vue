@@ -49,6 +49,8 @@ export default {
 		}
 	},
 	methods: {
+		
+		
 		submit() {
 			console.log("点击提交");
 			// if(this.$u.test.mobile(this.tel)) {

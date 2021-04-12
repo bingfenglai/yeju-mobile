@@ -1,6 +1,6 @@
 <template>
 
-  <view>
+  <view >
     <!-- 顶部导航条 开始 -->
     <view>
       <u-navbar
@@ -98,6 +98,7 @@
 	</u-grid>
 	</view>
 	
+	<view class="tabs_top"></view>
 	
 	<!-- 标签导航开始 -->
 		<view>
@@ -106,47 +107,39 @@
 			
 		</view>
 	
-	<!-- 间隔槽 -->
 	
-	<view>
-		<u-gap :bg-color="gap_bgColor" :height="gap_height" :margin-top="gap_marginTop" :margin-bottom="gap_marginBottom"></u-gap>
-	</view>
 	
 	
 	<!-- waterfall 房源瀑布流 -->
 	<view class="wrap">
 		<u-waterfall v-model="waterfall_flowList" ref="uWaterfall">
 			<template v-slot:left="{ leftList }">
-				<view class="demo-warter" v-for="(item, index) in leftList" :key="index">
+				<view class="demo-warter" v-for="(item, index) in leftList" :key="index" @click="onHouseItemClick(item.id)">
 					<!-- 微信小程序需要hx2.8.11版本才支持在template中引入其他组件，比如下方的u-lazy-load组件 -->
 					<u-lazy-load threshold="-450" border-radius="10" :image="item.image" :index="index"></u-lazy-load>
 					<view class="demo-title">{{ item.title }}</view>
 					<view class="demo-price">￥ {{ item.price }}</view>
 					<view class="demo-tag">
-						<view class="label ">精选房</view>
-						<view>|</view>
-						<view class="label ">面朝大海</view>
+						<view class="label ">精选房|面朝大海</view>
 					</view>
 					<!-- <view class="demo-shop">{{ item.shop }}</view> -->
-					<view class="u-close">
-						<u-icon name="close-circle-fill" color="#fa3534" size="34" @click="waterfall_remove(item.id)"></u-icon>
-					</view>
+					
 				</view>
 			</template>
 			<template v-slot:right="{ rightList }">
-				<view class="demo-warter" v-for="(item, index) in rightList" :key="index">
+				<view class="demo-warter" img-mode="aspectFill" v-for="(item, index) in rightList" :key="index" @click="onHouseItemClick(item.id)">
 					<u-lazy-load threshold="-450" border-radius="10" :image="item.image" :index="index"></u-lazy-load>
 					<view class="demo-title">{{ item.title }}</view>
 					<view class="demo-price">￥{{ item.price }}</view>
+					
+					
 					<view class="demo-tag">
+						
 						<view class="label ">椰居优品 </view>
 						<view>|</view>
 						<view class="label "> 春暖花开</view>
 					</view>
 					
-					<view class="u-close">
-						<u-icon name="close-circle-fill" color="#fa3534" size="34" @click="waterfall_remove(item.id)"></u-icon>
-					</view>
 				</view>
 			</template>
 		</u-waterfall>
