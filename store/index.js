@@ -4,10 +4,11 @@ import Vuex from 'vuex'
 Vue.use(Vuex)
 
 let lifeData = {};
-
+let is_authc = false;
 try {
     // 尝试获取本地是否存在lifeData变量，第一次启动APP时是不存在的
     lifeData = uni.getStorageSync('lifeData');
+	is_authc = uni.getStorageSync('yeju_is_authc')
 } catch (e) {
 
 }
@@ -30,6 +31,7 @@ const saveLifeData = function (key, value) {
 }
 const store = new Vuex.Store({
     state: {
+		is_authc: is_authc,
 		socketTask: undefined,
 		eventList: [],
         // 如果上面从本地获取的lifeData对象下有对应的属性，就赋值给state中对应的变量
@@ -141,7 +143,9 @@ const store = new Vuex.Store({
 		
         saveToken({commit}, token) {
             commit('SET_TOKEN', token)
-        }
+        },
+		
+		
     }
 })
 
@@ -153,6 +157,20 @@ export function getToken(){
 
 export function saveToken(token){
 	uni.setStorageSync('yeju_token', token)
+}
+
+export function saveAuthcStatus(status){
+	uni.setStorageSync('yeju_is_authc',status)
+}
+
+export function isAuthc(){
+	let flag = uni.getStorageSync('yeju_is_authc');
+	if(flag==undefined|| flag==null){
+		saveAuthcStatus(false);
+		flag = false;
+	}
+	
+	return flag;
 }
 
 export default store

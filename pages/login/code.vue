@@ -17,7 +17,7 @@
 <script>
 import config from '../../config.js'
 import mystore from '../../store/index.js'
-import {saveToken} from '../../store/index.js'
+import {saveToken,saveAuthcStatus} from '../../store/index.js'
 
 export default {
   data() {
@@ -101,6 +101,7 @@ export default {
 	  if(config.state.active==='dev'){
 		  
 		  saveToken('yeju_eyJhbGciOiJSUzUxMiJ9.eyJzdWJqZWN0Ijoie1wicHJpbmNpcGFsXCI6XCI5NjkzOTJcIixcImV4cGlyYXRpb25cIjo2NjYsXCJ0aW1lVW5pdFwiOlwiREFZU1wiLFwiYXV0aG9yaXR5TGlzdFwiOm51bGwsXCJzZXNzaW9uSWRcIjpcIjk2OTM5MTE2MTQ2MTI0NDIzMzlcIn0iLCJqdGkiOiJNalJrWWpJeU1UTXRPV05oTmkwMFlqVTRMVGd4WXpBdE1EYzVPV0l4T0RBNE5XUTMiLCJleHAiOjE2NzUxNDE2OTB9.mfn-ukAoiQGjatl6rCdJHDbtXecC8XzrnCwDe-GZzK_p1TlJcByQyhKx1B886xFPUDPu9LEf7KbrqDs5ouWT_Z-oS0v_rd1sWll9fJCTxaqsF53-pnIMSpkxR2slAnwQuKNNtttIGLYsURewUtYja5Ks1D9ZSQrIMMxtF1wj1iYnGgp4pEpH_n7AwS7T8yMv3up22Ibgy7Z7oZ3RCWei-GF4pY5vyqqyMgp5IkS4wtKEfEFzVUoQQWUomIOdGSr6SUjNBJ04oeDOBjCONuZU-lBpds_B1Dh30omNoZlFJsWUbN2hChOMD1pcC11IKYmTmvr6KgmHuNnE_jWnm_ZR8A')
+		  saveAuthcStatus(true)
 	  }
       
       this.$u.route({

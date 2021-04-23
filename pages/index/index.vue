@@ -114,7 +114,7 @@
 	<view class="wrap">
 		<u-waterfall v-model="waterfall_flowList" ref="uWaterfall">
 			<template v-slot:left="{ leftList }">
-				<view class="demo-warter" v-for="(item, index) in leftList" :key="index" @click="onHouseItemClick(item.id)">
+				<view class="demo-warter" v-for="(item, index) in leftList" :key="index" @click="onHouseItemClick(item)">
 					<!-- 微信小程序需要hx2.8.11版本才支持在template中引入其他组件，比如下方的u-lazy-load组件 -->
 					<u-lazy-load threshold="-450" border-radius="10" :image="item.image" :index="index"></u-lazy-load>
 					<view class="demo-title">{{ item.title }}</view>
@@ -159,8 +159,8 @@
 	
 	<!-- 网络状态监听 -->
 	<my-no-network></my-no-network>
-
-
+	<my-websocket></my-websocket>
+	
   </view>
 
 </template>

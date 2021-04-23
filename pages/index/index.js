@@ -2,10 +2,12 @@ import {tabbar_list} from "../../common/tabbar/tabbar_list.js"
 import mystore from "../../store/index.js"
 import {getToken} from '../../store/index.js'
 import myNoNetwork from '../no-network/index.vue'
-
+import myWebsocket from '../../components/ws-connect.vue'
 export default {
   components: {
-    myNoNetwork
+    myNoNetwork,
+	myWebsocket
+	
           },
   data() {
     return {
@@ -238,15 +240,15 @@ export default {
 	
 	
     is_authc() {
-      console.log("is_authc")
-      const token = getToken()
-      console.log("token", token)
-      if (token === undefined || token === '') {
-        console.log("未登录")
-        this.$u.route({
-          url: 'pages/login/index'
-        })
-      }
+      // console.log("is_authc")
+      // const token = getToken()
+      // console.log("token", token)
+      // if (token === undefined || token === '') {
+      //   console.log("未登录")
+      //   this.$u.route({
+      //     url: 'pages/login/index'
+      //   })
+      // }
 
     },
 
@@ -261,10 +263,11 @@ export default {
 		this.tabs_current = index;
 	},
 	
-	onHouseItemClick(index){
-		console.log("点击了房源",index)
+	onHouseItemClick(item){
+		console.log("点击了房源",item)
 		this.$u.route({
-		  url: 'pages/house-details/house-details'
+		  url: 'pages/house-details/house-details',
+		  params: {houseId: item.id}
 		})
 	},
 	
