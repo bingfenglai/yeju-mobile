@@ -153,8 +153,11 @@
 	
 	 <!-- 底线开始 -->
 	<view>
-		<u-divider :type="divider_type" :borderColor="divider_borderColor" :bg-color="divider_bgColor"
-		:half-width="divider_halfWidth" :color="divider_color" :font-size="divider_fontSize">{{divider_text}}</u-divider>
+		<u-divider
+		 v-if="this.is_divider"
+		 :type="divider_type" :borderColor="divider_borderColor" :bg-color="divider_bgColor"
+		:half-width="divider_halfWidth" :color="divider_color" :font-size="divider_fontSize"
+		>{{divider_text}}</u-divider>
 	</view>
 	
 	<!-- 网络状态监听 -->

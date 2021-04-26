@@ -179,7 +179,8 @@ export default {
 	  divider_borderColor: '#dcdfe6',
 	  divider_type: 'primary',
 	  divider_color: '#909399',
-	  divider_fontSize: '26'
+	  divider_fontSize: '26',
+	  is_divider: false,
 	  
 
     }
